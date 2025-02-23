@@ -11,7 +11,7 @@ setup(
     keywords=["ussd", "telecom", "session", "menu", "navigation", "api"],
     install_requires=[],
     extras_require={
-        "dev": ["pytest", "fakeredis", "black"],
+        "dev": ["pytest", "pytest-cov", "pytest-mock", "fakeredis", "black", "build"],
     },
     python_requires=">=3.7",
     classifiers=[

@@ -21,7 +21,7 @@ requires-python = ">=3.7"
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest", "fakeredis", "black"]
+dev = ["pytest", "pytest-cov", "pytest-mock", "fakeredis", "black", "build"]
 
 [project.urls]
 Homepage = "https://github.com/gagyekum/ussd-api"
