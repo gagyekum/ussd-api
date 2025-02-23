@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ussd-api"
+version = "0.1.0"
+description = "A versatile framework-agnostic USSD API for Python"
+authors = [
+    { name = "Gideon Agyekum", email = "gide2005@gmail.com" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+keywords = ["ussd", "telecom", "session", "menu", "navigation", "api"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.7"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "fakeredis", "black"]
+
+[project.urls]
+Homepage = "https://github.com/gagyekum/ussd-api"
+Repository = "https://github.com/gagyekum/ussd-api"
+Documentation = "https://github.com/gagyekum/ussd-api"
+
+[tool.setuptools.packages.find]
+where = ["."]
