@@ -1,0 +1,37 @@
+{
+    "main": {
+        "text": "Welcome to USSD App\n1. Balance\n2. Buy Airtime\n3. Exit",
+        "options": {
+            "1": "balance",
+            "2": "airtime",
+            "3": "exit"
+        }
+    },
+    "balance": {
+        "text": "Your balance is $10.\n0. Back",
+        "options": {
+            "0": "main"
+        }
+    },
+    "airtime": {
+        "text": "Enter amount to buy airtime:",
+        "input_required": true,
+        "next_state": "confirm_airtime"
+    },
+    "confirm_airtime": {
+        "text": "Confirm purchase of ${input} airtime?\n1. Yes\n2. No",
+        "options": {
+            "1": "success",
+            "2": "airtime"
+        }
+    },
+    "success": {
+        "text": "Airtime purchase successful!\n0. Back",
+        "options": {
+            "0": "main"
+        }
+    },
+    "exit": {
+        "text": "Thank you for using our service."
+    }
+}

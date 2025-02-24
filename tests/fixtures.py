@@ -1,6 +1,7 @@
+import json
 from ussd_api.session_store import BaseSessionStore
 
-TEST_SESSION_ID = "test-session-id"
+TEST_SESSION_ID = "c6e12905986e4d36b0198978e7f5991e"
 
 
 class InMemorySessionStore(BaseSessionStore):
@@ -23,10 +24,11 @@ class RedisSessionStore(BaseSessionStore):
         self.redis = redis_client
 
     def get(self, session_id, default=None):
-        return self.redis.get(session_id) or default
+        data = self.redis.get(session_id) or default
+        return json.loads(data) if isinstance(data, bytes) else data
 
     def set(self, session_id, data):
-        self.redis.set(session_id, data)
+        self.redis.set(session_id, json.dumps(data))
 
     def close(self):
         self.redis.close()

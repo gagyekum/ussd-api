@@ -5,17 +5,17 @@ class BaseSessionStore(ABC):
     """Abstract base class for session storage."""
 
     @abstractmethod
-    def get(self, session_id, default=None):
+    def get(self, session_id: str, default=None):
         """Retrieve session data by session_id.
 
         Args:
-            session_id: Session ID
+            session_id (str): Session ID
             default: Default value if not data is returned. Defaults to None.
         """
         pass
 
     @abstractmethod
-    def set(self, session_id, data):
+    def set(self, session_id: str, data):
         """Store session data by session_id.
 
         Args:

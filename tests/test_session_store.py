@@ -1,4 +1,3 @@
-import json
 import pytest
 
 from tests.fixtures import (
@@ -33,14 +32,13 @@ def test_redis_session_store_saves_and_retrieves_data_successfully(
     mocker, mock_redis_client
 ):
     data = {"field": "value"}
-    jsonified_data = json.dumps(data)
 
     with RedisSessionStore(mock_redis_client) as store:
         mocker.patch.object(store, "close")
-        store.set(TEST_SESSION_ID, jsonified_data)
+        store.set(TEST_SESSION_ID, data)
 
         assert mock_redis_client.exists(TEST_SESSION_ID)
-        assert json.loads(store.get(TEST_SESSION_ID)) == data
+        assert store.get(TEST_SESSION_ID) == data
 
     store.close.assert_called_once()
 
