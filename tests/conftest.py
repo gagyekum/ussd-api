@@ -1,9 +1,8 @@
-import json
 from fakeredis import FakeRedis
 import pytest
 
 from tests.fixtures import TEST_SESSION_ID, InMemorySessionStore, RedisSessionStore
-from ussd_api.consts import MENU_STATE_END, MENU_STATE_START
+from ussd_api.consts import MENU_STATE_START
 from ussd_api.core import USSDCoreAPI
 from ussd_api.state_engine import USSDStateEngine
 

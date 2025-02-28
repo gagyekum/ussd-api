@@ -1,5 +1,8 @@
+import pytest
+from tests.fixtures import TEST_SESSION_ID
 from ussd_api.consts import INVALID_OPTION_MESSAGE, MENU_STATE_START
-from ussd_api.core import USSDMenu
+from ussd_api.core import USSDCoreAPI, USSDMenu
+from ussd_api.exceptions import MenuTemplateFileNotFoundError
 
 
 def test_ussd_menu_dynamic_attributes():
@@ -22,6 +25,13 @@ def test_ussd_core_load_menu(mock_ussd_core_api):
         mock_ussd_core_api.menu_items[MENU_STATE_START]["text"]
         == "Welcome to USSD App\n1. Balance\n2. Buy Airtime\n3. Exit"
     )
+
+
+def test_ussd_core_load_menu_not_found(mock_redis_session_store):
+    with pytest.raises(MenuTemplateFileNotFoundError):
+        USSDCoreAPI(
+            TEST_SESSION_ID, mock_redis_session_store, "wrong/template_path.json"
+        )
 
 
 def test_ussd_core_process_valid_input(mock_ussd_core_api):

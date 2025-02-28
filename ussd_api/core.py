@@ -6,6 +6,7 @@ from ussd_api.consts import (
     INVALID_OPTION_MESSAGE,
     MENU_STATE_START,
 )
+from ussd_api.exceptions import MenuTemplateFileNotFoundError
 from ussd_api.session_store import BaseSessionStore
 from ussd_api.state_engine import USSDStateEngine
 
@@ -98,7 +99,7 @@ class USSDCoreAPI:
             with open(menu_template_path, "r", encoding="utf-8") as json_file:
                 return json.load(json_file)
         except (FileNotFoundError, json.JSONDecodeError) as e:
-            raise RuntimeError(
+            raise MenuTemplateFileNotFoundError(
                 f"Error loading USSD JSON menu file '{menu_template_path}': {e}"
             )
 
